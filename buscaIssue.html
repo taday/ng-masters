@@ -17,8 +17,9 @@
 					var $issueHTML = $(issueHTML)
 					$('#issuestable').append($issueHTML)
 				}
-				var username = $('#user').
-			    var le_repo = GithubRepo(username, reponame);
+				var username = $('#user').val();
+				var reponame = $('#reponame').val();
+				var le_repo = GithubRepo(username, reponame);
 			    $.each(le_repo, function(i, item) {
 				    addIssue(le_repo[i]);	     
 				});​
