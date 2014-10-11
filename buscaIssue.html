@@ -6,7 +6,9 @@
 			    function GithubRepo(username, reponame){
 		        	var url = 'https://api.github.com/repos/'+username+'/'+reponame+'/issues'
 					$.get(url).success(function(result){
-						return result;
+						for(var i=0; i < result.length; i++){
+							addIssue(result[i]);
+						}
 					});
 				}
 				function addIssue(issue){
@@ -19,10 +21,7 @@
 				}
 				var username = $('#user').val();
 				var reponame = $('#reponame').val();
-				var le_repo = GithubRepo(username, reponame);
-			    for(var i=0; i < le_repo.length; i++){
-					addIssue(le_repo[i]);
-				}
+				GithubRepo(username, reponame);
 			}
 		</script>
 	</head>
