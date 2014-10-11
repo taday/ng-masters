@@ -1,0 +1,40 @@
+<html>
+	<head>
+		<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+		<script type="text/javascript">
+			function vaibuscarasissues(){
+			    function GithubRepo(username, reponame){
+		        	var url = 'https://api.github.com/repos/'+username+'/'+reponame+'/issues'
+					$.get(url).success(function(result){
+						return result;
+					});
+				}
+				function addIssue(issue){
+					var issueHTML = '<tr>';
+					issueHTML += '<td>'+ issue.number +'</td>';
+					issueHTML += '<td>'+ issue.title +'</td>';
+					issueHTML += '</tr>';
+					var $issueHTML = $(issueHTML)
+					$('#issuestable').append($issueHTML)
+				}
+				var username = $('#user').
+			    var le_repo = GithubRepo(username, reponame);
+			    $.each(le_repo, function(i, item) {
+				    addIssue(le_repo[i]);	     
+				});​
+			}
+		</script>
+	</head>
+	<body>
+		Usuario <input type="text" id="user">
+		Repositório <input type="text" id="reponame">
+		<button onclick="vaibuscarasissues()" >Vai buscar as issues</button>
+
+		<table id="issuestable">
+    		<tr>
+    			<th>Numero</th>
+    			<th>Titulo</th>
+			</tr>
+		</table>
+	</body>
+</html>
