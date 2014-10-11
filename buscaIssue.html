@@ -5,11 +5,15 @@
 			function vaibuscarasissues(){
 			    function GithubRepo(username, reponame){
 		        	var url = 'https://api.github.com/repos/'+username+'/'+reponame+'/issues'
-					$.get(url).success(function(result){
-						for(var i=0; i < result.length; i++){
-							addIssue(result[i]);
-						}
-					});
+		        	function f(){
+		        		$.get(url).success(function(result){
+							for(var i=0; i < result.length; i++){
+								addIssue(result[i]);
+							}
+						});
+		        	}
+		        	return f;
+		        	
 				}
 				function addIssue(issue){
 					var issueHTML = '<tr>';
@@ -21,7 +25,7 @@
 				}
 				var username = $('#user').val();
 				var reponame = $('#reponame').val();
-				GithubRepo(username, reponame);
+				var le_repo = GithubRepo(username, reponame);
 			}
 		</script>
 	</head>
