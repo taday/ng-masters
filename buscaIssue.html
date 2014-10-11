@@ -20,10 +20,10 @@
 				var username = $('#user').val();
 				var reponame = $('#reponame').val();
 				var le_repo = GithubRepo(username, reponame);
-			    $.each(le_repo, function(i, item) {
-				    addIssue(le_repo[i]);	     
-				});​
-			};
+			    for(var i=0; i < le_repo.length; i++){
+					addIssue(le_repo[i]);
+				}
+			}
 		</script>
 	</head>
 	<body>
